@@ -1,20 +1,148 @@
-// RockPaperScissorsLizardSpock.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
-
+using namespace std;
 int main()
 {
-    std::cout << "Hello World!\n";
+	int randomNumber, userChoice, playAgainAnswer;
+	string computerChoice, gameStatus;
+	bool isWinner;
+	cout << "Let's play Rock, Paper, Sciessors, Lizard, Spock!\n";
+	while (true) {
+		randomNumber = rand() % 5 + 1;
+		switch (randomNumber) {
+		case 1:
+			computerChoice = "Rock";
+			break;
+		case 2:
+			computerChoice = "Paper";
+			break;
+		case 3:
+			computerChoice = "Scissors";
+			break;
+		case 4:
+			computerChoice = "Lizard";
+			break;
+		default:
+			computerChoice = "Spock";
+			break;
+		}
+		cout << "What will you choose?\n";
+		cout << "(1) Rock, (2) Paper, (3) Scissors, (4) Lizzard, (5) Spock: ";
+		cin >> userChoice;
+
+		cout << "The computer chooses " << computerChoice << endl;
+		if (randomNumber == userChoice) {
+			cout << "Tie! Try again.\n";
+		}
+		else {
+			isWinner = false;
+			switch (userChoice) {
+			case 1:
+				if (randomNumber == 3 || randomNumber == 4) {
+					gameStatus = "Rock crashes " + computerChoice;
+					isWinner = true;
+				}
+				else if (randomNumber == 2) {
+					gameStatus = "Paper covers Rock.";
+				}
+				else {
+					gameStatus = "Spock vaporizes Rock.";
+
+				}
+				break;
+
+			case 2:
+				if (randomNumber == 1) {
+					gameStatus = "Paper covers Rock";
+					isWinner = true;
+				}
+				else if (randomNumber == 5) {
+					gameStatus = "Paper disproves Spock.";
+					isWinner = true;
+				}
+				else if (randomNumber == 3) {
+					gameStatus = "Scissors cut Paper.";
+				}
+				else {
+					gameStatus = "Lizard eats Paper.";
+
+				}
+				break;
+
+			case 3:
+				if (randomNumber == 2) {
+					gameStatus = "Scissors cut Paper.";
+					isWinner = true;
+				}
+				else if (randomNumber == 4) {
+					gameStatus = "Scissors decapitates Lizard.";
+					isWinner = true;
+				}
+				else if (randomNumber == 5) {
+					gameStatus = "Spock smashes Scissors.";
+				}
+				else {
+					gameStatus = "Rock crushes scissors.";
+
+				}
+				break;
+
+			case 4:
+				if (randomNumber == 5) {
+					gameStatus = "Lizzard poisons Spock.";
+					isWinner = true;
+				}
+				else if (randomNumber == 2) {
+					gameStatus = "Lizard eats Paper";
+					isWinner = true;
+				}
+				else if (randomNumber == 1) {
+					gameStatus = "Rock crushes Lizard.";
+				}
+				else {
+					gameStatus = "Scissors decapitates Lizard.";
+
+				}
+				break;
+
+			default:
+				if (randomNumber == 3) {
+					gameStatus = "Spock smashes Sciessors.";
+					isWinner = true;
+				}
+				else if (randomNumber == 1) {
+					gameStatus = "Spock vaporizes Rock.";
+					isWinner = true;
+				}
+				else if (randomNumber == 2) {
+					gameStatus = "Paper disproves Spock.";
+				}
+				else {
+					gameStatus = "Lizard poisons Spock.";
+
+				}
+				break;
+
+
+			}
+			cout << gameStatus << endl;
+			if (isWinner) {
+				cout << "You win!\n";
+			}
+			else {
+				cout << "You loose!\n";
+			}
+			cout << "Do you want to play again? ( 1 = Yes, 2 = No): ";
+			cin >> playAgainAnswer;
+			if (playAgainAnswer == 2) {
+				break;
+			}
+			
+		}
+	}
+	
+
+	
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+
